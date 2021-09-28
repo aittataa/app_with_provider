@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:wallet_manager/classes/transactions.dart';
 import 'package:wallet_manager/constant/constant.dart';
+import 'package:wallet_manager/constant/messages.dart';
 import 'package:wallet_manager/provider/transactions_provider.dart';
 import 'package:wallet_manager/widget/bounce_point.dart';
 import 'package:wallet_manager/widget/empty_box.dart';
@@ -92,7 +93,7 @@ class TransactionManager extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
-                            "Balance",
+                            Messages.balance,
                             style: TextStyle(
                               color: blackTextColor,
                               fontWeight: FontWeight.bold,
