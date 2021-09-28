@@ -4,6 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:wallet_manager/constant/constant.dart';
 import 'package:wallet_manager/constant/messages.dart';
+import 'package:wallet_manager/provider/categories_provider.dart';
+import 'package:wallet_manager/provider/settings_provider.dart';
+import 'package:wallet_manager/provider/transactions_provider.dart';
+import 'package:wallet_manager/screens/initial_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,17 +29,17 @@ class WalletManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: const [
-        // ChangeNotifierProvider.value(value: SettingsProvider()),
-        // ChangeNotifierProvider.value(value: CategoriesProvider()),
-        // ChangeNotifierProvider.value(value: TransactionsProvider()),
+      providers: [
+        ChangeNotifierProvider.value(value: SettingsProvider()),
+        ChangeNotifierProvider.value(value: CategoriesProvider()),
+        ChangeNotifierProvider.value(value: TransactionsProvider()),
       ],
       builder: (context, child) {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
           title: Messages.APP_TITLE,
           color: mainColor,
-          // home: InitialScreen(),
+          home: InitialScreen(),
           // home: Splash(),
         );
       },
