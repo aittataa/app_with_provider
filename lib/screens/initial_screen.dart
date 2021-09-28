@@ -65,7 +65,7 @@ class _InitialScreenState extends State<InitialScreen> {
                 IconButton(
                   splashColor: transparentColor,
                   highlightColor: transparentColor,
-                  tooltip: initialScreen == 0 ? Messages.ADD_NEW_TRANSACTION : Messages.ADD_NEW_CATEGORY,
+                  tooltip: initialScreen == 0 ? Messages.addTransaction : Messages.addCategory,
                   icon: const Icon(CupertinoIcons.plus_app, color: whiteIconColor, size: 30),
                   onPressed: () => showCupertinoModalPopup(
                     barrierColor: blackBackColor.withOpacity(.5),
@@ -84,9 +84,9 @@ class _InitialScreenState extends State<InitialScreen> {
           body: PageView(
             controller: initialController,
             physics: const NeverScrollableScrollPhysics(),
-            children: [
+            children: const [
               TransactionManager(),
-              const CategoriesManager(),
+              CategoriesManager(),
               StatisticManager(),
               SettingsManager(),
             ],

@@ -19,7 +19,7 @@ class _SettingsManagerState extends State<SettingsManager> {
   void initState() {
     super.initState();
     selectedCurrency = appSettings.currency;
-    selectedLanguage = Messages.LANGUAGE_EN;
+    selectedLanguage = Messages.languageEN;
   }
 
   String selectedCurrency;
@@ -41,7 +41,7 @@ class _SettingsManagerState extends State<SettingsManager> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   boxShadow: [boxShadow],
-                  image: const DecorationImage(image: AssetImage(Messages.APP_ICON_ROUND)),
+                  image: const DecorationImage(image: AssetImage(Messages.appIconRound)),
                 ),
               ),
               ListTile(
@@ -51,12 +51,12 @@ class _SettingsManagerState extends State<SettingsManager> {
                 leading: const SizedBox(
                   width: 100,
                   child: Text(
-                    "${Messages.LANGUAGE} :",
+                    "${Messages.languageLabel} :",
                     style: TextStyle(color: blackTextColor, fontWeight: FontWeight.w900),
                   ),
                 ),
                 title: DropdownList(
-                  hint: Messages.LANGUAGE,
+                  hint: Messages.languageLabel,
                   value: selectedLanguage,
                   onChanged: (language) async {
                     setState(() => selectedLanguage = language);
@@ -83,12 +83,12 @@ class _SettingsManagerState extends State<SettingsManager> {
                 leading: const SizedBox(
                   width: 100,
                   child: Text(
-                    "${Messages.CURRENCY} :",
+                    "${Messages.currencyLabel} :",
                     style: TextStyle(color: blackTextColor, fontWeight: FontWeight.w900),
                   ),
                 ),
                 title: DropdownList(
-                  hint: Messages.CURRENCY,
+                  hint: Messages.currencyLabel,
                   value: selectedCurrency,
                   onChanged: (currency) async {
                     setState(() => selectedCurrency = currency);
@@ -110,13 +110,13 @@ class _SettingsManagerState extends State<SettingsManager> {
               ),
               ListTile(
                 title: AddButton(
-                  title: Messages.SAVE,
+                  title: Messages.labelSave,
                   color: mainColor,
                   onPressed: () async {
                     final data = dataProvider.updateSettings(
                       Settings(id: 1, currency: selectedCurrency),
                     );
-                    if (data != null) messageBox(context, message: Messages.SAVE_MESSAGE);
+                    if (data != null) messageBox(context, message: Messages.saveMessage);
                   },
                 ),
               ),

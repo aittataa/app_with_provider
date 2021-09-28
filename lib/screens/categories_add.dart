@@ -35,7 +35,7 @@ class CategoriesAdd extends StatelessWidget {
               ),
             ),
             child: Text(
-              index == 0 ? Messages.NEW_INCOME : Messages.NEW_EXPENSIVE,
+              index == 0 ? Messages.newIncome : Messages.newExpenses,
               style: const TextStyle(
                 color: mainColor,
                 fontWeight: FontWeight.w900,
@@ -51,11 +51,11 @@ class CategoriesAdd extends StatelessWidget {
                 TextBox(
                   index: index,
                   controller: controller,
-                  hintText: index == 0 ? Messages.TYPE_NEW_INCOME : Messages.TYPE_NEW_EXPENSIVE,
+                  hintText: index == 0 ? Messages.typeNewIncome : Messages.typeNewExpenses,
                 ),
                 AddButton(
                   index: index,
-                  title: Messages.ADD,
+                  title: Messages.labelAdd,
                   color: index == 0 ? incomeColor : expenseColor,
                   onPressed: () async {
                     if (controller.text.isNotEmpty) {

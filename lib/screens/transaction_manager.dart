@@ -25,12 +25,12 @@ class TransactionManager extends StatelessWidget {
           final balanceState = balance >= 0;
           return ListView(
             shrinkWrap: true,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             physics: const BouncingScrollPhysics(),
             children: [
               Container(
                 height: 250,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: whiteBackColor,
                   boxShadow: [boxShadow],
@@ -59,7 +59,7 @@ class TransactionManager extends StatelessWidget {
                                   radius: 50,
                                   showTitle: state,
                                   title: "${incomes.toStringAsFixed(2)} ${appSettings.currency}",
-                                  titleStyle: TextStyle(
+                                  titleStyle: const TextStyle(
                                     color: blackTextColor,
                                     fontWeight: FontWeight.w900,
                                   ),
@@ -72,7 +72,7 @@ class TransactionManager extends StatelessWidget {
                                   radius: 50,
                                   showTitle: state,
                                   title: "${expenses.toStringAsFixed(2)} ${appSettings.currency}",
-                                  titleStyle: TextStyle(
+                                  titleStyle: const TextStyle(
                                     color: blackTextColor,
                                     fontWeight: FontWeight.w900,
                                   ),
@@ -91,7 +91,7 @@ class TransactionManager extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             "Balance",
                             style: TextStyle(
                               color: blackTextColor,
@@ -113,8 +113,8 @@ class TransactionManager extends StatelessWidget {
               ),
               ListView.builder(
                 shrinkWrap: true,
-                padding: EdgeInsets.all(5),
-                physics: BouncingScrollPhysics(),
+                padding: const EdgeInsets.all(5),
+                physics: const BouncingScrollPhysics(),
                 itemCount: transactionList.length,
                 itemBuilder: (context, i) {
                   Transactions transaction = transactionList[i];
@@ -131,9 +131,9 @@ class TransactionManager extends StatelessWidget {
             ],
           );
         } else if (transactionList.isEmpty) {
-          return BouncePoint(size: 30);
+          return const BouncePoint(size: 30);
         } else {
-          return EmptyBox();
+          return const EmptyBox();
         }
       },
     );

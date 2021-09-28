@@ -1,41 +1,40 @@
 class Messages {
-  static const String APP_TITLE = "iManager";
-  static const String INCOME = "Income";
-  static const String EXPENSIVE = "Expenses";
-  static const String BALANCE = "Balance";
-  static const String NEW_INCOME = "New Income";
-  static const String NEW_EXPENSIVE = "New Expensive";
-  static const String TYPE_NEW_INCOME = "Type New Income...";
-  static const String TYPE_NEW_EXPENSIVE = "Type New Expensive...";
-  static const String ADD_NEW_TRANSACTION = "Add New Transaction";
-  static const String ADD_NEW_CATEGORY = "Add New Category";
-  static const String CATEGORY = "Category";
-  static const String SAVE = "Save";
-  static const String ADD = "Add";
-  static const String BACK = "Back";
-  static const String SAVE_MESSAGE = "Currency Update Successfully";
-  static const String TYPE_MESSAGE = "Type Something...";
-  static const String AMOUNT = "200";
+  static const String appTitle = "iManager";
+  static const String income = "Income";
+  static const String expenses = "Expenses";
+  static const String balance = "Balance";
+  static const String newIncome = "New Income";
+  static const String newExpenses = "New Expenses";
+  static const String typeNewIncome = "Type New Income...";
+  static const String typeNewExpenses = "Type New Expenses...";
+  static const String addTransaction = "Add New Transaction";
+  static const String addCategory = "Add New Category";
+  static const String labelCategory = "Category";
+  static const String labelSave = "Save";
+  static const String labelAdd = "Add";
+  static const String saveMessage = "Currency Update Successfully";
+  static const String typeMessage = "Type Something...";
+  static const String amount = "200";
 
   /// TODO : App Icon
-  static const String APP_ICON = "assets/icons/app_icon.png";
-  static const String APP_ICON_ROUND = "assets/icons/app_icon_round.png";
+  static const String appIcon = "assets/icons/app_icon.png";
+  static const String appIconRound = "assets/icons/app_icon_round.png";
 
   /// TODO : Language
-  static const String LANGUAGE = "Language";
-  static const String LANGUAGE_EN = "English";
-  static const String LANGUAGE_AR = "Arabic";
-  static const String LANGUAGE_FR = "French";
+  static const String languageLabel = "Language";
+  static const String languageEN = "English";
+  static const String languageAR = "Arabic";
+  static const String languageFR = "French";
 
   /// TODO : Currency
-  static const String CURRENCY = "Currency";
-  static const String CURRENCY_MAD = "DH";
-  static const String CURRENCY_USD = "\$";
-  static const String CURRENCY_EUR = "€";
+  static const String currencyLabel = "Currency";
+  static const String currencyMAD = "DH";
+  static const String currencyUSD = "\$";
+  static const String currencyEUR = "€";
 
   /// TODO : Label Navigation
-  static const String LABEL_HOME = "Home";
-  static const String LABEL_CATEGORIES = "Categories";
-  static const String LABEL_STATISTIC = "Statistic";
-  static const String LABEL_SETTINGS = "Settings";
+  static const String labelHome = "Home";
+  static const String labelCategories = "Categories";
+  static const String labelStatistic = "Statistic";
+  static const String labelSettings = "Settings";
 }

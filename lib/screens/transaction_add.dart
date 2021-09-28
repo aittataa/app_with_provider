@@ -52,7 +52,7 @@ class _TransactionAddState extends State<TransactionAdd> {
             children: [
               HeaderButton(
                 index: 0,
-                title: Messages.INCOME,
+                title: Messages.income,
                 icon: CupertinoIcons.square_arrow_down_fill,
                 onPressed: () {
                   pageIndex = 0;
@@ -64,7 +64,7 @@ class _TransactionAddState extends State<TransactionAdd> {
               ),
               HeaderButton(
                 index: 1,
-                title: Messages.EXPENSIVE,
+                title: Messages.expenses,
                 icon: CupertinoIcons.square_arrow_up_fill,
                 onPressed: () {
                   pageIndex = 1;

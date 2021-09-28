@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_manager/constant/constant.dart';
-import 'package:wallet_manager/constant/messages.dart';
 
 class BackIcon extends StatelessWidget {
   final int index;
@@ -16,7 +15,6 @@ class BackIcon extends StatelessWidget {
         color: transparentColor,
         splashColor: transparentColor,
         highlightColor: transparentColor,
-        tooltip: Messages.BACK,
         icon: const Icon(
           CupertinoIcons.left_chevron,
           color: whiteIconColor,

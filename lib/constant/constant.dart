@@ -41,22 +41,22 @@ messageBox(context, {String message}) {
 }
 
 const List<String> languageList = [
-  Messages.LANGUAGE_EN,
-  Messages.LANGUAGE_AR,
-  Messages.LANGUAGE_FR,
+  Messages.languageEN,
+  Messages.languageAR,
+  Messages.languageFR,
 ];
 
 const List<String> currencyList = [
-  Messages.CURRENCY_MAD,
-  Messages.CURRENCY_USD,
-  Messages.CURRENCY_EUR,
+  Messages.currencyMAD,
+  Messages.currencyUSD,
+  Messages.currencyEUR,
 ];
 
 const List<String> pageTitle = [
-  Messages.APP_TITLE,
-  Messages.LABEL_CATEGORIES,
-  Messages.LABEL_STATISTIC,
-  Messages.LABEL_SETTINGS,
+  Messages.appTitle,
+  Messages.labelCategories,
+  Messages.labelStatistic,
+  Messages.labelSettings,
 ];
 
 /// TODO : Index For Categories

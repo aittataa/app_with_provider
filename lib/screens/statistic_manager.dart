@@ -34,7 +34,7 @@ class _StatisticManagerState extends State<StatisticManager> {
                 children: [
                   HeaderButton(
                     index: 0,
-                    title: Messages.INCOME,
+                    title: Messages.income,
                     icon: CupertinoIcons.square_arrow_down_fill,
                     onPressed: () {
                       setState(() => animateToPage(0));
@@ -42,7 +42,7 @@ class _StatisticManagerState extends State<StatisticManager> {
                   ),
                   HeaderButton(
                     index: 1,
-                    title: Messages.EXPENSIVE,
+                    title: Messages.expenses,
                     icon: CupertinoIcons.square_arrow_up_fill,
                     onPressed: () {
                       setState(() => animateToPage(1));

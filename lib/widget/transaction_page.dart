@@ -43,13 +43,13 @@ class TransactionPage extends StatelessWidget {
                   index: index,
                   controller: amountController,
                   state: true,
-                  hintText: Messages.AMOUNT,
+                  hintText: Messages.amount,
                 ),
               ),
               const SizedBox(width: 5),
               Expanded(
                 child: DropdownList(
-                  hint: Messages.CATEGORY,
+                  hint: Messages.labelCategory,
                   value: value,
                   onChanged: onChanged,
                   myList: List.generate(myList.length, (index) {
@@ -74,12 +74,12 @@ class TransactionPage extends StatelessWidget {
           ),
           TextBox(
             controller: descriptionController,
-            hintText: Messages.TYPE_MESSAGE,
+            hintText: Messages.typeMessage,
             maxLines: 3,
           ),
           AddButton(
             index: index,
-            title: Messages.ADD,
+            title: Messages.labelAdd,
             color: index == 0 ? incomeColor : expenseColor,
             onPressed: onPressed,
           ),

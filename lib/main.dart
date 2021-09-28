@@ -37,7 +37,7 @@ class WalletManager extends StatelessWidget {
       builder: (context, child) {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: Messages.APP_TITLE,
+          title: Messages.appTitle,
           color: mainColor,
           home: InitialScreen(),
           // home: Splash(),

@@ -33,7 +33,7 @@ class _CategoriesManagerState extends State<CategoriesManager> {
                 children: [
                   HeaderButton(
                     index: 0,
-                    title: Messages.INCOME,
+                    title: Messages.income,
                     icon: CupertinoIcons.square_arrow_down_fill,
                     onPressed: () {
                       setState(() {
@@ -43,7 +43,7 @@ class _CategoriesManagerState extends State<CategoriesManager> {
                   ),
                   HeaderButton(
                     index: 1,
-                    title: Messages.EXPENSIVE,
+                    title: Messages.expenses,
                     icon: CupertinoIcons.square_arrow_up_fill,
                     onPressed: () {
                       setState(() {
