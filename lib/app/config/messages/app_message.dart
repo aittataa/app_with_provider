@@ -22,6 +22,8 @@ class AppMessage {
   /// TODO : App Icon
   static const String appIcon = "assets/icons/app_icon.png";
   static const String appIconRound = "assets/icons/app_icon_round.png";
+  // static const String appIconRound = "assets/icons/app_icon_round.png";
+  // static const String appIconRound = "assets/icons/app_icon_round.png";
 
   /// TODO : Language
   static const String languageLabel = "Language";
