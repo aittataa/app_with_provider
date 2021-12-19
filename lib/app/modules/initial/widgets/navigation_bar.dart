@@ -16,7 +16,7 @@ class NavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       onTap: onTap,
       currentIndex: currentIndex,
-      //elevation: 1,
+      elevation: 1,
       type: BottomNavigationBarType.fixed,
       backgroundColor: AppTheme.primaryBackColor,
       selectedItemColor: AppTheme.mainColor,
@@ -35,9 +35,9 @@ class NavigationBar extends StatelessWidget {
           activeIcon: Icon(CupertinoIcons.layers_alt_fill),
         ),
         BottomNavigationBarItem(
-          label: AppMessage.labelCategories,
-          icon: Icon(CupertinoIcons.layers_alt),
-          activeIcon: Icon(CupertinoIcons.layers_alt_fill),
+          label: AppMessage.labelStatistic,
+          icon: Icon(CupertinoIcons.chart_pie),
+          activeIcon: Icon(CupertinoIcons.chart_pie_fill),
         ),
         BottomNavigationBarItem(
           label: AppMessage.labelSettings,

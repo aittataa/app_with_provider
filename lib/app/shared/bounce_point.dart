@@ -21,19 +21,21 @@ class BouncePoint extends StatelessWidget {
       case true:
         return SpinKitThreeBounce(
           size: size,
-          color: color ?? AppTheme.secondaryBackColor,
+          color: color ?? AppTheme.mainColor,
           duration: AppConstant.durationSplash,
         );
       case false:
-        return SpinKitCubeGrid(
-          size: size,
-          color: color ?? AppTheme.secondaryBackColor,
-          duration: AppConstant.durationSplash,
+        return Center(
+          child: SpinKitCubeGrid(
+            size: size,
+            color: color ?? AppTheme.mainColor,
+            duration: AppConstant.durationSplash,
+          ),
         );
       default:
         return SpinKitSquareCircle(
           size: size,
-          color: color ?? AppTheme.secondaryBackColor,
+          color: color ?? AppTheme.mainColor,
           duration: AppConstant.durationSplash,
         );
     }

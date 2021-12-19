@@ -13,16 +13,15 @@ class AppConstant {
   static const Curve curve = Curves.linearToEaseOut;
 
   /// TODO : Transitions
-  static const Transition transitionRoute = Transition.topLevel;
+  static const Transition transitionRoute = Transition.fadeIn;
 
   /// TODO : Durations
-  static const Duration durationRoute = Duration(milliseconds: 100);
-  static const Duration durationSplash = Duration(milliseconds: 1500);
-  static const Duration durationAnimation = Duration(milliseconds: 1000);
-  static const Duration durationCheckedBox = Duration(milliseconds: 500);
-  static const Duration durationGender = Duration(milliseconds: 250);
-  static const Duration durationContainer = Duration(milliseconds: 1000);
   static const Duration duration = Duration(milliseconds: 1500);
+  static const Duration durationSwap = Duration(milliseconds: 1000);
+  static const Duration durationSplash = Duration(milliseconds: 1500);
+  static const Duration durationRoute = Duration(milliseconds: 100);
+  static const Duration durationAnimation = Duration(milliseconds: 1000);
+  static const Duration durationContainer = Duration(milliseconds: 1000);
 
   /// TODO : BoxShadow
   static BoxShadow boxShadow = BoxShadow(

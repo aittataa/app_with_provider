@@ -1,22 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_online/app/modules/categories/views/categories_view.dart';
+import 'package:wallet_online/app/modules/home/views/home_view.dart';
+import 'package:wallet_online/app/modules/initial/widgets/navigation_bar.dart';
+import 'package:wallet_online/app/modules/settings/views/settings_view.dart';
+import 'package:wallet_online/app/modules/statistic/views/statistic_view.dart';
 
-import 'package:get/get.dart';
+class InitialView extends StatefulWidget {
+  @override
+  State<InitialView> createState() => _InitialViewState();
+}
 
-import '../controllers/initial_controller.dart';
+class _InitialViewState extends State<InitialView> {
+  late PageController controller = PageController();
+  late int pageIndex = 0;
 
-class InitialView extends GetView<InitialController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('InitialView'),
-        centerTitle: true,
+      body: PageView(
+        controller: controller,
+        physics: NeverScrollableScrollPhysics(),
+        children: [
+          HomeView(),
+          CategoriesView(),
+          StatisticView(),
+          SettingsView(),
+        ],
       ),
-      body: Center(
-        child: Text(
-          'InitialView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      bottomNavigationBar: NavigationBar(
+        currentIndex: pageIndex,
+        onTap: (index) {
+          setState(() {
+            pageIndex = index;
+            controller.jumpToPage(pageIndex);
+          });
+        },
       ),
     );
   }

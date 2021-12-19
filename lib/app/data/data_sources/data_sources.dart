@@ -1,10 +1,12 @@
+import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/data/models/categories.dart';
 import 'package:wallet_online/app/data/models/settings.dart';
 import 'package:wallet_online/app/data/models/transactions.dart';
 
-class DataHelper {
+class DataSources extends GetConnect {
   // static Database _myDataBase;
   static const String _db_name = "wallet.db";
   static const String _id = "id";
@@ -32,19 +34,18 @@ class DataHelper {
       $_color INTEGER NOT NULL,
       $_state BIT NOT NULL
   );''';
-  /*
+
   static String _tbl_category_data_query = '''
   INSERT INTO $_tbl_category($_id, $_title, $_color, $_state)VALUES
-    (1, 'Others', '$getRandomColor', 0),
-    (2, 'Salary', '$getRandomColor', 0),
-    (3, 'Others', '$getRandomColor', 1),
-    (4, 'Food', '$getRandomColor', 1),
-    (5, 'Clothes', '$getRandomColor', 1),
-    (6, 'Transportation', '$getRandomColor', 1),
-    (7, 'Shopping', '$getRandomColor', 1),
-    (8, 'Bills', '$getRandomColor', 1)
+    (1, 'Others', '${AppFunction.getRandomColor}', 0),
+    (2, 'Salary', '${AppFunction.getRandomColor}', 0),
+    (3, 'Others', '${AppFunction.getRandomColor}', 1),
+    (4, 'Food', '${AppFunction.getRandomColor}', 1),
+    (5, 'Clothes', '${AppFunction.getRandomColor}', 1),
+    (6, 'Transportation', '${AppFunction.getRandomColor}', 1),
+    (7, 'Shopping', '${AppFunction.getRandomColor}', 1),
+    (8, 'Bills', '${AppFunction.getRandomColor}', 1)
   ''';
-  */
 
   static const String _tbl_transaction = "transactions";
   static const String _description = "description";
@@ -60,7 +61,7 @@ class DataHelper {
       $_categoryID INTEGER NOT NULL,
       $_state BIT NOT NULL
   );''';
-  /*
+
   static const String _tbl_transaction_data_query = '''
    INSERT INTO $_tbl_transaction ($_description, $_amount, $_categoryID, $_state) VALUES
     ('Others Stuff', 100,  3, 1),
@@ -74,9 +75,8 @@ class DataHelper {
     ('Lunch', 100,  4, 1),
     ('', 75,   6, 1)
    ''';
-  */
 
-  static Future<Database> get _database async {
+  Future<Database> get _database async {
     // if (_myDataBase != null) {
     //   return _myDataBase;
     // }
@@ -90,22 +90,22 @@ class DataHelper {
         await db.execute(_tbl_transaction_query);
 
         /// TODO : Data
-        //await db.execute(_tbl_settings_data_query);
-        //await db.execute(_tbl_category_data_query);
-        //await db.execute(_tbl_transaction_data_query);
+        await db.execute(_tbl_settings_data_query);
+        await db.execute(_tbl_category_data_query);
+        await db.execute(_tbl_transaction_data_query);
       },
     );
     //return _myDataBase;
   }
 
   /// TODO : About Settings
-  static Future<Settings> get getSettings async {
+  Future<Settings> get getSettings async {
     final db = await _database;
     final myList = await db.query(_tbl_settings);
     return List<Settings>.from(myList.map((value) => Settings.fromMap(value))).first;
   }
 
-  static Future updateSettings(Settings settings) async {
+  Future updateSettings(Settings settings) async {
     final db = await _database;
     return db.update(
       _tbl_settings,
@@ -116,7 +116,7 @@ class DataHelper {
   }
 
   /// TODO : About Categories
-  static Future<List<Categories>> get getAllCategories async {
+  Future<List<Categories>> get getAllCategories async {
     final db = await _database;
     final String query = ''' 
           SELECT $_tbl_category.*, SUM($_amount) as $_total
@@ -130,13 +130,13 @@ class DataHelper {
     return List<Categories>.from(myList.map((value) => Categories.fromMap(value)));
   }
 
-  static Future insertCategory(Categories category) async {
+  Future insertCategory(Categories category) async {
     final db = await _database;
     return db.insert(_tbl_category, category.toMap());
   }
 
   /// TODO : About Transactions
-  static Future<List<Transactions>> get getAllTransactions async {
+  Future<List<Transactions>> get getAllTransactions async {
     final db = await _database;
     final String query = '''
           SELECT $_tbl_transaction.*, $_title 
@@ -144,16 +144,17 @@ class DataHelper {
           ON $_tbl_transaction.$_categoryID = $_tbl_category.$_id 
           ORDER BY $_tbl_transaction.$_id DESC
     ''';
-    final myList = await db.rawQuery(query);
+    var myList = await db.rawQuery(query);
+    print(myList);
     return List<Transactions>.from(myList.map((value) => Transactions.fromMap(value)));
   }
 
-  static Future insertTransaction(Transactions transaction) async {
+  Future insertTransaction(Transactions transaction) async {
     final db = await _database;
     return db.insert(_tbl_transaction, transaction.toMap());
   }
 
-  static Future deleteTransaction(int id) async {
+  Future deleteTransaction(int id) async {
     final db = await _database;
     return db.delete(
       _tbl_transaction,

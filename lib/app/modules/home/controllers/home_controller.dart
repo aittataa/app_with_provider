@@ -1,20 +1,40 @@
 import 'package:get/get.dart';
+import 'package:wallet_online/app/config/responses/app_response.dart';
+import 'package:wallet_online/app/data/data_sources/data_sources.dart';
+import 'package:wallet_online/app/data/models/transactions.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  final DataSources _dataSources = Get.put(DataSources());
+  var transactions = <Transactions>[].obs;
+  var state = false.obs;
+  var loadState = false.obs;
+  var appResponse = AppResponse().obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    loadData;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  get loadData async {
+    state.value = true;
+    transactions.value = await _dataSources.getAllTransactions;
+    state.value = false;
   }
 
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+  loadCount(int state) {
+    //return transactions.where((transaction) => transaction.state == state).toList().fold(0, (a, b) => a + b.amount!).toDouble();
+  }
+
+  // addTransaction(Transactions transaction) async {
+  //   var data = DataHelper.insertTransaction(transaction);
+  //   notifyListeners();
+  //   return data;
+  // }
+  //
+  // deleteTransaction(int id) async {
+  //   var data = DataHelper.deleteTransaction(id);
+  //   notifyListeners();
+  //   return data;
+  // }
 }
