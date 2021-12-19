@@ -14,7 +14,8 @@ dependencies:
   cached_network_image: 3.1.0+1
   auto_size_text: 3.0.0
   shared_preferences: 2.0.9
-  flutter:
+  sqflite: 2.0.1
+  flutter: 
     sdk: flutter
 
 dev_dependencies: 
@@ -24,12 +25,12 @@ dev_dependencies:
     sdk: flutter
 
 flutter: 
-  uses-material-design: true
-  assets:
+  assets: 
     - assets/icons/
+  uses-material-design: true
 
-flutter_icons:
-  android: "app_icon_round"
-  image_path: "assets/icons/app_icon_round.png"
+flutter_icons: 
+  android: app_icon_round
+  image_path: assets/icons/app_icon_round.png
   ios: true
 

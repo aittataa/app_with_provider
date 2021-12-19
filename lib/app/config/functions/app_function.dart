@@ -15,7 +15,7 @@ class AppFunction {
     return Get.snackbar(
       title,
       message,
-      backgroundColor: AppTheme.errorColor,
+      backgroundColor: AppTheme.mainColor,
       titleText: Text(
         title,
         style: TextStyle(
