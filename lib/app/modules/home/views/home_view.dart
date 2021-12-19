@@ -6,6 +6,7 @@ import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/transactions.dart';
 import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
+import 'package:wallet_online/app/modules/home/widgets/transaction_shape.dart';
 import 'package:wallet_online/app/shared/bounce_point.dart';
 import 'package:wallet_online/app/shared/empty_box.dart';
 
@@ -28,7 +29,7 @@ class HomeView extends StatelessWidget {
           if (isEmpty) {
             return EmptyBox();
           } else {
-            final double incomes = 0; // = controller.loadCount(0);
+            final double incomes = myList.where((transaction) => transaction!.state == 0).toList().fold(0, (a, b) => a! + b!.amount!).toDouble();
             final double expenses = 0; // = controller.loadCount(1);
             final balance = incomes - expenses;
             final balanceState = balance >= 0;
@@ -127,17 +128,16 @@ class HomeView extends StatelessWidget {
                   itemCount: myList.length,
                   itemBuilder: (context, i) {
                     Transactions transaction = myList[i];
-                    return SizedBox();
-                    /*
-                    return TransactionItem(
+                    //return SizedBox();
+
+                    return TransactionShape(
                       transaction: transaction,
                       onPressed: () async {
-                        int id = transaction.id;
-                        var data = dataProvider.deleteTransaction(id);
-                        print(data);
+                        // int id = transaction.id;
+                        // var data = dataProvider.deleteTransaction(id);
+                        // print(data);
                       },
                     );
-                    */
                   },
                 ),
               ],

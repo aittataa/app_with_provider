@@ -145,7 +145,6 @@ class DataSources extends GetConnect {
           ORDER BY $_tbl_transaction.$_id DESC
     ''';
     var myList = await db.rawQuery(query);
-    print(myList);
     return List<Transactions>.from(myList.map((value) => Transactions.fromMap(value)));
   }
 
