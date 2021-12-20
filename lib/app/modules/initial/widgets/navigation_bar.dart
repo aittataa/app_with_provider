@@ -16,14 +16,13 @@ class NavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       onTap: onTap,
       currentIndex: currentIndex,
-      elevation: 1,
       type: BottomNavigationBarType.fixed,
       backgroundColor: AppTheme.primaryBackColor,
       selectedItemColor: AppTheme.mainColor,
       unselectedItemColor: AppTheme.primaryIconColor.withOpacity(.5),
       selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w900),
       showUnselectedLabels: false,
-      items: const [
+      items: [
         BottomNavigationBarItem(
           label: AppMessage.labelHome,
           icon: Icon(CupertinoIcons.house_alt),

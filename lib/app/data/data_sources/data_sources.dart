@@ -155,7 +155,7 @@ class DataSources extends GetConnect {
 
   Future deleteTransaction(int id) async {
     final db = await _database;
-    return db.delete(
+    return await db.delete(
       _tbl_transaction,
       where: "$_id = ?",
       whereArgs: [id],

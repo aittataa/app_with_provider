@@ -32,7 +32,7 @@ class AppMessage {
   /// TODO : Currency
   static const String currencyLabel = "Currency";
   static const String currencyMAD = "DH";
-  static const String currencyUSD = "\$";
+  static const String currencyUSD = r"$";
   static const String currencyEUR = "€";
 
   /// TODO : Label Navigation

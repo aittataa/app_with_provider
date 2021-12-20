@@ -3,20 +3,25 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
 class AppFunction {
   AppFunction._();
 
-  static loadCount(List myList, int state) {
-    return myList.where((transaction) => transaction.state == state).toList().fold(0, (a, b) => a + b.amount!).toDouble();
+  static loadCount(List myList) {
+    try {
+      return myList.map((transaction) => transaction.amount).reduce((a, b) => a! + b!);
+    } catch (e) {
+      return 0.0;
+    }
   }
 
   static int get getRandomColor => Color(Random().nextInt(0xFFFFFFFF)).withAlpha(0xFF).value;
+
   static String dateShape(DateTime date) => DateFormat('MMM dd, yyyy').format(date);
 
+  /*
   static snackBar({required String title, required String message}) {
     return Get.snackbar(
       title,
@@ -39,6 +44,7 @@ class AppFunction {
       margin: EdgeInsets.all(10),
     );
   }
+  */
 
   // static animateToPage(int index) {
   //   AppConstant.pageIndex = index;
@@ -47,6 +53,7 @@ class AppFunction {
   //   );
   // }
 
+  /*
   static gridDelegate({
     int crossAxisCount = 1,
     double spacing = 10,
@@ -59,6 +66,7 @@ class AppFunction {
       crossAxisSpacing: spacing,
     );
   }
+  */
 
   static get configureDependencies {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

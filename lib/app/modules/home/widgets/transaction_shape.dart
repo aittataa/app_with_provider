@@ -5,15 +5,18 @@ import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/transactions.dart';
+import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
 
 class TransactionShape extends StatelessWidget {
+  final HomeController controller;
   final Transactions transaction;
   final Function()? onPressed;
-  final Function()? onTap;
+  //final Function()? onTap;
   const TransactionShape({
     Key? key,
+    required this.controller,
     required this.transaction,
-    this.onTap,
+    //this.onTap,
     this.onPressed,
   }) : super(key: key);
   @override
@@ -46,7 +49,7 @@ class TransactionShape extends StatelessWidget {
               "${transaction.categoryTitle}",
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                color: AppTheme.primaryTextColor, //.withOpacity(.9),
+                color: AppTheme.primaryTextColor,
                 fontWeight: FontWeight.w900,
               ),
             ),

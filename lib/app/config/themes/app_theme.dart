@@ -45,7 +45,11 @@ class AppTheme {
         ),
         iconTheme: IconThemeData(
           color: AppTheme.secondaryIconColor,
-          opacity: .75,
+          size: 30,
+        ),
+        actionsIconTheme: IconThemeData(
+          color: AppTheme.secondaryIconColor,
+          size: 30,
         ),
       ),
     );

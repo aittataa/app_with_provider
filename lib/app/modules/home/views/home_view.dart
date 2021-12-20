@@ -1,24 +1,30 @@
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallet_online/app/config/constants/app_constant.dart';
+import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/transactions.dart';
 import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
+import 'package:wallet_online/app/modules/home/widgets/action_button.dart';
 import 'package:wallet_online/app/modules/home/widgets/transaction_shape.dart';
 import 'package:wallet_online/app/shared/bounce_point.dart';
 import 'package:wallet_online/app/shared/empty_box.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
   final HomeController controller = Get.put(HomeController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppMessage.appTitle),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text(AppMessage.appTitle)),
       body: Obx(() {
         final bool state = controller.state.value;
         if (state) {
@@ -29,8 +35,8 @@ class HomeView extends StatelessWidget {
           if (isEmpty) {
             return EmptyBox();
           } else {
-            final double incomes = myList.where((transaction) => transaction!.state == 0).toList().fold(0, (a, b) => a! + b!.amount!).toDouble();
-            final double expenses = 0; // = controller.loadCount(1);
+            final double incomes = AppFunction.loadCount(myList.where((transaction) => transaction.state == 0).toList());
+            final double expenses = AppFunction.loadCount(myList.where((transaction) => transaction.state == 1).toList());
             final balance = incomes - expenses;
             final balanceState = balance >= 0;
             return ListView(
@@ -44,7 +50,7 @@ class HomeView extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppTheme.primaryBackColor,
                     boxShadow: [AppConstant.boxShadow],
-                    borderRadius: BorderRadius.circular(25),
+                    borderRadius: BorderRadius.circular(20),
                   ),
                   child: Stack(
                     children: [
@@ -123,19 +129,21 @@ class HomeView extends StatelessWidget {
                 ),
                 ListView.builder(
                   shrinkWrap: true,
-                  padding: const EdgeInsets.all(5),
-                  physics: const BouncingScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: myList.length,
                   itemBuilder: (context, i) {
                     Transactions transaction = myList[i];
-                    //return SizedBox();
-
                     return TransactionShape(
+                      controller: controller,
                       transaction: transaction,
                       onPressed: () async {
-                        // int id = transaction.id;
-                        // var data = dataProvider.deleteTransaction(id);
-                        // print(data);
+                        int id = transaction.id!;
+                        var data = await controller.deleteTransaction(id);
+                        setState(() {
+                          print(myList.remove(transaction));
+                          print(data);
+                        });
                       },
                     );
                   },
@@ -145,6 +153,7 @@ class HomeView extends StatelessWidget {
           }
         }
       }),
+      floatingActionButton: ActionButton(),
     );
   }
 }
