@@ -12,7 +12,7 @@ class InitialView extends StatefulWidget {
 
 class _InitialViewState extends State<InitialView> {
   late PageController controller = PageController();
-  late int pageIndex = 1;
+  late int pageIndex = 2;
 
   @override
   void initState() {
@@ -33,7 +33,7 @@ class _InitialViewState extends State<InitialView> {
           SettingsView(),
         ],
       ),
-      bottomNavigationBar: NavigationBar(
+      bottomNavigationBar: FooterBar(
         currentIndex: pageIndex,
         onTap: (index) {
           setState(() {

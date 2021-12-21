@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
-class NavigationBar extends StatelessWidget {
+class FooterBar extends StatelessWidget {
   final int currentIndex;
   final Function(int)? onTap;
-  const NavigationBar({
+  const FooterBar({
     Key? key,
     required this.currentIndex,
     this.onTap,
@@ -20,7 +20,7 @@ class NavigationBar extends StatelessWidget {
       backgroundColor: AppTheme.primaryBackColor,
       selectedItemColor: AppTheme.mainColor,
       unselectedItemColor: AppTheme.primaryIconColor.withOpacity(.5),
-      selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w900),
+      selectedLabelStyle: TextStyle(fontWeight: FontWeight.w900),
       showUnselectedLabels: false,
       items: [
         BottomNavigationBarItem(

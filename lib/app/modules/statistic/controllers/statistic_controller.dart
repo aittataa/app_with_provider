@@ -1,20 +1,21 @@
 import 'package:get/get.dart';
+import 'package:wallet_online/app/data/data_sources/data_sources.dart';
+import 'package:wallet_online/app/data/models/categories.dart';
 
 class StatisticController extends GetxController {
-  //TODO: Implement StatisticController
+  final DataSources _dataSources = Get.put(DataSources());
+  var categories = <Categories>[].obs;
+  var state = false.obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    loadCategories;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  get loadCategories async {
+    state.value = true;
+    categories.value = await _dataSources.getCategories;
+    state.value = false;
   }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

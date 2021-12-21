@@ -7,7 +7,6 @@ import 'package:wallet_online/app/data/models/settings.dart';
 import 'package:wallet_online/app/data/models/transactions.dart';
 
 class DataSources extends GetConnect {
-  // static Database _myDataBase;
   static const String _db_name = "wallet.db";
   static const String _id = "id";
   static const String _state = "state";
@@ -116,18 +115,19 @@ class DataSources extends GetConnect {
   }
 
   /// TODO : About Categories
-  Future<List<Categories>> get getAllCategories async {
+  Future<List<Categories>> get getCategories async {
     final db = await _database;
-    final String query = ''' 
+    final String query = '''
           SELECT $_tbl_category.*, SUM($_amount) as $_total
           FROM $_tbl_category
-          LEFT JOIN $_tbl_transaction 
+          LEFT JOIN $_tbl_transaction
           on $_tbl_category.$_id = $_tbl_transaction.$_categoryID
-          GROUP BY $_tbl_category.$_id 
+          GROUP BY $_tbl_category.$_id
           ORDER BY $_total DESC , $_id DESC
     ''';
-    final myList = await db.query(query);
-    return List<Categories>.from(myList.map((value) => Categories.fromMap(value)));
+    print(query);
+    final response = await db.rawQuery(query);
+    return categoriesFromMap(response);
   }
 
   Future insertCategory(Categories category) async {
@@ -136,16 +136,16 @@ class DataSources extends GetConnect {
   }
 
   /// TODO : About Transactions
-  Future<List<Transactions>> get getAllTransactions async {
+  Future<List<Transactions>> get getTransactions async {
     final db = await _database;
     final String query = '''
-          SELECT $_tbl_transaction.*, $_title 
-          FROM $_tbl_transaction INNER JOIN $_tbl_category 
-          ON $_tbl_transaction.$_categoryID = $_tbl_category.$_id 
+          SELECT $_tbl_transaction.*, $_title
+          FROM $_tbl_transaction INNER JOIN $_tbl_category
+          ON $_tbl_transaction.$_categoryID = $_tbl_category.$_id
           ORDER BY $_tbl_transaction.$_id DESC
     ''';
-    var myList = await db.rawQuery(query);
-    return List<Transactions>.from(myList.map((value) => Transactions.fromMap(value)));
+    var response = await db.rawQuery(query);
+    return transactionsFromMap(response);
   }
 
   Future insertTransaction(Transactions transaction) async {

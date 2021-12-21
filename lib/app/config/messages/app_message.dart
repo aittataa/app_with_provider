@@ -3,7 +3,7 @@ class AppMessage {
   static const String noDataFound = "No Data Found";
 
   static const String appTitle = "Wallet Online";
-  static const String income = "Income";
+  static const String incomes = "Incomes";
   static const String expenses = "Expenses";
   static const String balance = "Balance";
   static const String newIncome = "New Income";

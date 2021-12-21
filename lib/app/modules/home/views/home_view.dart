@@ -1,5 +1,4 @@
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallet_online/app/config/constants/app_constant.dart';
@@ -8,8 +7,8 @@ import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/transactions.dart';
 import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
-import 'package:wallet_online/app/modules/home/widgets/action_button.dart';
 import 'package:wallet_online/app/modules/home/widgets/transaction_shape.dart';
+import 'package:wallet_online/app/shared/action_button.dart';
 import 'package:wallet_online/app/shared/bounce_point.dart';
 import 'package:wallet_online/app/shared/empty_box.dart';
 
@@ -133,7 +132,7 @@ class _HomeViewState extends State<HomeView> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: myList.length,
                   itemBuilder: (context, i) {
-                    Transactions transaction = myList[i];
+                    final Transactions transaction = myList[i];
                     return TransactionShape(
                       controller: controller,
                       transaction: transaction,

@@ -21,7 +21,7 @@ class ActionButton extends StatelessWidget {
       animationSpeed: 250,
       children: [
         SpeedDialChild(
-          label: AppMessage.income,
+          label: AppMessage.incomes,
           labelStyle: TextStyle(color: AppTheme.primaryTextColor.withOpacity(.75), fontWeight: FontWeight.w900),
           child: Icon(CupertinoIcons.square_arrow_down_fill, color: AppTheme.incomeColor),
           onTap: () {},

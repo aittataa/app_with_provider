@@ -1,3 +1,7 @@
+transactionsFromMap(var map) {
+  return List<Transactions>.from(map.map((value) => Transactions.fromMap(value)));
+}
+
 class Transactions {
   final int? id;
   final String? description;

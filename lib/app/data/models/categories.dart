@@ -1,3 +1,7 @@
+categoriesFromMap(var map) {
+  return List<Categories>.from(map.map((value) => Categories.fromMap(value)));
+}
+
 class Categories {
   final int? id;
   final String? title;
