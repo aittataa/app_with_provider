@@ -39,7 +39,6 @@ class WalletManager extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: Messages.appTitle,
           color: mainColor,
-          // home: InitialScreen(),
           home: Splash(),
         );
       },

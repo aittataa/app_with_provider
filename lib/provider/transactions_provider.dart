@@ -21,6 +21,7 @@ class TransactionsProvider extends ChangeNotifier {
 
   deleteTransaction(int id) async {
     var data = DataHelper.deleteTransaction(id);
+
     notifyListeners();
     return data;
   }

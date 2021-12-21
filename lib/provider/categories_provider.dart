@@ -15,6 +15,7 @@ class CategoriesProvider extends ChangeNotifier {
 
   addCategory(Categories category) async {
     var data = DataHelper.insertCategory(category);
+
     notifyListeners();
     return data;
   }
