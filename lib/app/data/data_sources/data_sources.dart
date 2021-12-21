@@ -125,8 +125,8 @@ class DataSources extends GetConnect {
           GROUP BY $_tbl_category.$_id
           ORDER BY $_total DESC , $_id DESC
     ''';
-    print(query);
     final response = await db.rawQuery(query);
+    print(response);
     return categoriesFromMap(response);
   }
 

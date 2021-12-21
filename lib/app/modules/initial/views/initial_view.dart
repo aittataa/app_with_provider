@@ -12,7 +12,7 @@ class InitialView extends StatefulWidget {
 
 class _InitialViewState extends State<InitialView> {
   late PageController controller = PageController();
-  late int pageIndex = 2;
+  late int pageIndex = 0;
 
   @override
   void initState() {

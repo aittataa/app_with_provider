@@ -4,7 +4,6 @@ import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/routes/app_pages.dart';
-import 'package:wallet_online/app/shared/splash.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,10 +19,10 @@ class WalletOnline extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppMessage.appTitle,
-      //initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
       theme: AppTheme.themeData,
-      home: Splash(),
+      getPages: AppPages.routes,
+      initialRoute: AppPages.INITIAL,
+      // home: Splash(),
     );
   }
 }

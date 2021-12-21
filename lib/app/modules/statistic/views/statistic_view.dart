@@ -27,7 +27,7 @@ class _StatisticViewState extends State<StatisticView> {
       body: Obx(() {
         final bool state = controller.state.value;
         if (state) {
-          return BouncePoint(state: true);
+          return BouncePoint();
         } else {
           final List<Categories> myList = controller.categories;
           final bool isEmpty = myList.isEmpty;

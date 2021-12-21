@@ -5,7 +5,13 @@ import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
 class ActionButton extends StatelessWidget {
-  const ActionButton({Key? key}) : super(key: key);
+  final Function()? onIncomeTap;
+  final Function()? onExpensesTap;
+  const ActionButton({
+    Key? key,
+    this.onIncomeTap,
+    this.onExpensesTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +30,13 @@ class ActionButton extends StatelessWidget {
           label: AppMessage.incomes,
           labelStyle: TextStyle(color: AppTheme.primaryTextColor.withOpacity(.75), fontWeight: FontWeight.w900),
           child: Icon(CupertinoIcons.square_arrow_down_fill, color: AppTheme.incomeColor),
-          onTap: () {},
+          onTap: onIncomeTap,
         ),
         SpeedDialChild(
           label: AppMessage.expenses,
           labelStyle: TextStyle(color: AppTheme.primaryTextColor.withOpacity(.75), fontWeight: FontWeight.w900),
           child: Icon(CupertinoIcons.square_arrow_up_fill, color: AppTheme.expenseColor),
-          onTap: () {},
+          onTap: onExpensesTap,
         ),
       ],
     );

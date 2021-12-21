@@ -1,4 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallet_online/app/config/constants/app_constant.dart';
@@ -7,6 +8,7 @@ import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/transactions.dart';
 import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
+import 'package:wallet_online/app/modules/home/widgets/transaction_add.dart';
 import 'package:wallet_online/app/modules/home/widgets/transaction_shape.dart';
 import 'package:wallet_online/app/shared/action_button.dart';
 import 'package:wallet_online/app/shared/bounce_point.dart';
@@ -27,7 +29,7 @@ class _HomeViewState extends State<HomeView> {
       body: Obx(() {
         final bool state = controller.state.value;
         if (state) {
-          return BouncePoint(state: true);
+          return BouncePoint();
         } else {
           final List<Transactions> myList = controller.transactions;
           final bool isEmpty = myList.isEmpty;
@@ -152,7 +154,17 @@ class _HomeViewState extends State<HomeView> {
           }
         }
       }),
-      floatingActionButton: ActionButton(),
+      floatingActionButton: ActionButton(
+        onIncomeTap: () {
+          showCupertinoModalPopup(
+            barrierColor: AppTheme.secondaryBackColor.withOpacity(.5),
+            context: context,
+            builder: (context) {
+              return TransactionAdd(controller: controller);
+            },
+          );
+        },
+      ),
     );
   }
 }
