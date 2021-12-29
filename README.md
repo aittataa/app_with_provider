@@ -1,6 +1,6 @@
 # Wallet Manager
 
-Manage Your Maney Simply
+Wallet Manager
 
 ## Check this :
 
